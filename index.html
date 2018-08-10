@@ -11,13 +11,11 @@
 </head>
 
 <body>
-  <h1>Greg's List!</h1>
-  <button onclick="app.controllers.carController.addCar()">Add Car</button>
-  <button onclick="app.controllers.houseController.houseSetup()">Add House</button>
-  <button>Add Job</button>
-
   <div id="form">
-
+    <h1>Greg's List!</h1>
+    <button onclick="app.controllers.carController.carSetup(event)">Add Car</button>
+    <button onclick="app.controllers.houseController.houseSetup()">Add House</button>
+    <button onclick="app.controllers.jobController.jobSetup()">Add Job</button>
   </div>
 
   <!-- <form onsubmit="app.controllers.carController.addCar(event)">
