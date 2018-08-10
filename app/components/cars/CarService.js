@@ -29,6 +29,8 @@ export default class CarService {
       ))
     })
     return carsCopy
+
+    //return JSON.parse(JSON.stringify(cars))
   }
 
   addCar(formData) {

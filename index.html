@@ -11,8 +11,16 @@
 </head>
 
 <body>
+  <h1>Greg's List!</h1>
+  <button onclick="app.controllers.carController.addCar()">Add Car</button>
+  <button onclick="app.controllers.houseController.houseSetup()">Add House</button>
+  <button>Add Job</button>
 
-  <form onsubmit="app.controllers.carController.addCar(event)">
+  <div id="form">
+
+  </div>
+
+  <!-- <form onsubmit="app.controllers.carController.addCar(event)">
     <label for="make">Make</label>
     <input type="text" name="make" placeholder="Make" required>
     <input type="text" name="model" placeholder="Model" required>
@@ -21,10 +29,10 @@
     <input type="text" name="color" placeholder="Color" required>
     <input type="url" name="imgUrl" placeholder="Image Link" required>
     <button type="submit">Add Car</button>
-  </form>
+  </form> -->
 
   <div class="container">
-    <div id="cars" class="row">
+    <div id="submissions" class="row">
       <!-- <div class="col-3">
         <p>${car.make}</p>
         <p>${car.model}</p>
