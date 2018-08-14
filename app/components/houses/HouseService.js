@@ -1,5 +1,6 @@
 import House from "../../models/House.js"
 
+// @ts-ignore
 const houseApi = axios.create({
     baseURL: 'https://bcw-gregslist.herokuapp.com/api/houses',
     timeout: 3000

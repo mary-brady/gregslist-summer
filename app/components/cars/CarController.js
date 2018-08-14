@@ -26,7 +26,8 @@ export default class CarController {
   carSetup() {
     let template = `
       <form onsubmit="app.controllers.carController.addCar(event)">
-        <label for="bedrooms">Make</label>
+      <h3>List Your Car:</h3>
+      <label for="bedrooms">Make</label>
         <input type="text" name="make" placeholder="Make" required>
       
         <label for="bathrooms">Model</label>

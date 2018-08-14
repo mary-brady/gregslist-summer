@@ -27,6 +27,7 @@ export default class HouseController {
     houseSetup() {
         let template = `
             <form onsubmit="app.controllers.houseController.postHouse(event)">
+            <h3>List Your House:</h3>
             <label for="bedrooms">Bedrooms: </label>
             <input type="text" name="bedrooms" placeholder="Bedrooms" required>
             

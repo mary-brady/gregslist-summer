@@ -3,17 +3,17 @@ import JobService from './JobService.js'
 let jobService = new JobService()
 
 
-function drawJob() {
-    let jobsCopy = jobService.getJobs()
+function drawJob(jobs) {
     let template = ''
-    for (let i = 0; i < jobsCopy.length; i++) {
-        const job = jobsCopy[i];
+    for (let i = 0; i < jobs.length; i++) {
+        const job = jobs[i];
         template += `
-        <div class="col-3">
-        <p>Make: ${job.position}</p>
-        <p>${job.company}</p>
-        <p>${job.salary}</p>
-        <p>${job.location}</p>
+        <div style="outline: 1px solid black" class="col-3">
+        <p>Company: ${job.company}</p>
+        <p>Job Title:${job.jobTitle}</p>
+        <p>Hours: ${job.hours}</p>
+        <p>Rate: ${job.rate}</p>
+        <p>Description: ${job.description}</p>
     </div>`
     }
     document.getElementById('submissions').innerHTML = template
@@ -27,31 +27,34 @@ export default class JobController {
     jobSetup() {
         let template = `
         <form onsubmit="app.controllers.jobController.postJob(event)">
-        <label for="position">Position</label>
-        <input type="text" name="position" placeholder="Position" required>
-        
+        <h3>Post Your Job: Your House:</h3>
         <label for="company">Company</label>
         <input type="text" name="company" placeholder="Company" required>
         
-        <label for="salary">Salary</label>
-        <input type="number" name="salary" placeholder="Square Feet" required>
+        <label for="jobTitle">Job Title</label>
+        <input type="text" name="jobTitle" placeholder="Job Title" required>
         
-        <label for="location">Location</label>
-        <input type="text" name="location" placeholder="Location" required>
+        <label for="hours">Hours</label>
+        <input type="number" name="hours" placeholder="Hours" required>
+        
+        <label for="rate">Rate</label>
+        <input type="text" name="rate" placeholder="Rate" required>
+
+        <label for="description">Job Description</label>
+        <input type="text" name="description" placeholder="Describe the Position" required>
         
         <button type="submit">Post Job</button>
         </form>
         `
         document.getElementById('form').innerHTML = template
-        drawJob()
+        jobService.getJobs(drawJob)
     }
 
-    postJob(event) {
-        event.PreventDefault();
-        let formData = event.target;
-        jobService.postJob(formData)
+    postJob(e) {
+        e.PreventDefault();
+        let formData = e.target;
+        jobService.postJob(formData, drawJob)
         formData.reset()
-        drawJob()
 
     }
 }
