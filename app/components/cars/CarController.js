@@ -2,10 +2,8 @@ import CarService from "./CarService.js";
 
 let carService = new CarService()
 
-function drawCars() {
-  let cars = carService.getCars()
+function drawCars(cars) {
   let template = ''
-
   for (let i = 0; i < cars.length; i++) {
     const car = cars[i];
     template += `
@@ -14,16 +12,14 @@ function drawCars() {
         <p>${car.model}</p>
         <p>${car.price}</p>
         <p>${car.year}</p>
-        <p>${car.color}</p>
+        <p>${car.description}</p>
         <img src="${car.imgUrl}" alt="somethingelse">
     </div>`
   }
   document.getElementById('submissions').innerHTML = template
-  drawCars()
 }
 
 export default class CarController {
-
   constructor() {
 
   }
@@ -42,7 +38,7 @@ export default class CarController {
         <label for="bedrooms">Year</label>
         <input type="text" name="year" placeholder="Year" required>
       
-        <label for="imgUrl">Color</label>
+        <label for="description">Description</label>
         <input type="url" name="color" placeholder="Color" required>
       
         <label for="imgUrl">Image URL</label>
@@ -52,15 +48,14 @@ export default class CarController {
       </form>
       `
     document.getElementById("form").innerHTML = template
-    drawCars()
+    carService.getCars(drawCars)
   }
 
-  addCar(event) {
-    event.preventDefault();
-    let formData = event.target
-    carService.addCar(formData)
+  addCar(e) {
+    e.preventDefault();
+    let formData = e.target
+    carService.addCar(formData, drawCars)
     formData.reset()
-    drawCars()
   }
 
 }
