@@ -15,7 +15,7 @@ function drawHouse(houses) {
         <p>${house.year}</p>
         <p>${house.price}</p>
         <p>${house.description}</p>
-        <button onclick="app.controllers.houseController.deleteHouse('${house._id}')">Buhlete</button>
+        <button onclick="app.controllers.houseController.deleteHouse('${house._id}')">BUHLETE</button>
 
     </div>`
     }
@@ -64,6 +64,10 @@ export default class HouseController {
         let formData = e.target;
         houseService.postHouse(formData, drawHouse)
         formData.reset()
+    }
+
+    deleteHouse(houseId) {
+        houseService.deleteHouse(houseId, drawHouse)
     }
 
 }

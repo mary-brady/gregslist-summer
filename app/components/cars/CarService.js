@@ -30,5 +30,21 @@ export default class CarService {
       description: formData.description.value,
       imgUrl: formData.imgUrl.value,
     })
+    carsApi.post('', newCar)
+      .then(res => {
+        this.getCars(draw)
+      })
+  }
+  deleteCar(carId, draw) {
+    carsApi.delete(carId)
+      .then(res => {
+        this.getCars(draw)
+      })
+  }
+  bid(carId, update, draw) {
+    carsApi.put(carId, update)
+      .then(res => {
+        this.getCars(draw)
+      })
   }
 }

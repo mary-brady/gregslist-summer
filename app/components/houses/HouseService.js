@@ -30,4 +30,11 @@ export default class HouseService {
             description: formData.description.value,
         })
     }
+
+    deleteHouse(houseId, draw) {
+        houseApi.delete(houseId)
+            .then(res => {
+                this.getHouses(draw)
+            })
+    }
 }

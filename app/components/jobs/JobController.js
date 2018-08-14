@@ -15,7 +15,7 @@ function drawJob(jobs) {
         <p>Hours: ${job.hours}</p>
         <p>Rate: ${job.rate}</p>
         <p>Description: ${job.description}</p>
-        <button onclick="app.controllers.jobController.deleteJob('${job._id}')">Buhleted</button>
+        <button onclick="app.controllers.jobController.deleteJob('${job._id}')">BUHLETE</button>
         </div>`
     }
     document.getElementById('submissions').innerHTML = template
