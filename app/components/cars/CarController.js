@@ -14,6 +14,8 @@ function drawCars(cars) {
         <p>${car.year}</p>
         <p>${car.description}</p>
         <img src="${car.imgUrl}" alt="somethingelse">
+        <button onclick="app.controllers.jobController.deleteCar()">Buhleted</button>
+
     </div>`
   }
   document.getElementById('submissions').innerHTML = template
@@ -40,7 +42,7 @@ export default class CarController {
         <input type="text" name="year" placeholder="Year" required>
       
         <label for="description">Description</label>
-        <input type="url" name="color" placeholder="Color" required>
+        <input type="text" name="description" placeholder="Description">
       
         <label for="imgUrl">Image URL</label>
         <input type="url" name="imgUrl" placeholder="Image Link" required>

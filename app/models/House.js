@@ -1,5 +1,6 @@
 export default class House {
     constructor(data) {
+        this._id = data._id
         this.bedrooms = data.bedrooms
         this.bathrooms = data.bathrooms
         this.imgUrl = data.imgUrl

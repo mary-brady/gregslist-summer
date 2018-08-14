@@ -15,6 +15,8 @@ function drawHouse(houses) {
         <p>${house.year}</p>
         <p>${house.price}</p>
         <p>${house.description}</p>
+        <button onclick="app.controllers.houseController.deleteHouse('${house._id}')">Buhlete</button>
+
     </div>`
     }
     document.getElementById("submissions").innerHTML = template

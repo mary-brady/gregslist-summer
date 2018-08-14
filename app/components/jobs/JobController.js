@@ -1,4 +1,5 @@
 import JobService from './JobService.js'
+import Car from '../../models/Car.js';
 
 let jobService = new JobService()
 
@@ -14,7 +15,8 @@ function drawJob(jobs) {
         <p>Hours: ${job.hours}</p>
         <p>Rate: ${job.rate}</p>
         <p>Description: ${job.description}</p>
-    </div>`
+        <button onclick="app.controllers.jobController.deleteJob('${job._id}')">Buhleted</button>
+        </div>`
     }
     document.getElementById('submissions').innerHTML = template
 }
@@ -56,5 +58,9 @@ export default class JobController {
         jobService.postJob(formData, drawJob)
         formData.reset()
 
+    }
+
+    deleteJob(jobId) {
+        jobService.deleteJob(jobId, drawJob)
     }
 }

@@ -2,7 +2,7 @@ import Job from "../../models/Job.js"
 
 // @ts-ignore
 const jobsApi = axios.create({
-    baseURL: 'https://bcw-gregslist.herokuapp.com/api/jobs',
+    baseURL: 'https://bcw-gregslist.herokuapp.com/api/jobs/',
     timeout: 3000
 })
 
@@ -27,5 +27,12 @@ export default class JobService {
             rate: formData.rate.value,
             description: formData.description.value,
         })
+    }
+
+    deleteJob(jobId, draw) {
+        jobsApi.delete(jobId)
+            .then(res => {
+                this.getJobs(draw)
+            })
     }
 }
